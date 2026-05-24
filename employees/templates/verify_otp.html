@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#f3f4f6;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            padding:20px;
+        }
+
+        .otp-card{
+            width:100%;
+            max-width:450px;
+            background:white;
+            border-radius:24px;
+            padding:40px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.08);
+            text-align:center;
+        }
+
+        .otp-icon{
+            font-size:60px;
+            margin-bottom:20px;
+        }
+
+        .otp-title{
+            font-size:32px;
+            font-weight:700;
+            color:#111827;
+            margin-bottom:12px;
+        }
+
+        .otp-subtitle{
+            color:#6b7280;
+            font-size:15px;
+            margin-bottom:35px;
+            line-height:1.6;
+        }
+
+        .otp-box{
+            width:100%;
+            padding:18px;
+            border:1px solid #d1d5db;
+            border-radius:16px;
+            text-align:center;
+            font-size:28px;
+            letter-spacing:10px;
+            background:#f9fafb;
+            transition:0.3s ease;
+        }
+
+        .otp-box:focus{
+            outline:none;
+            border-color:#2563eb;
+            background:white;
+            box-shadow:0 0 0 4px rgba(37,99,235,0.15);
+        }
+
+        .btn-verify{
+            width:100%;
+            padding:15px;
+            border:none;
+            border-radius:14px;
+            background:#2563eb;
+            color:white;
+            font-size:16px;
+            font-weight:600;
+            cursor:pointer;
+            transition:0.3s ease;
+            margin-top:25px;
+        }
+
+        .btn-verify:hover{
+            background:#1d4ed8;
+            transform:translateY(-2px);
+        }
+
+        .bottom-text{
+            margin-top:25px;
+            color:#6b7280;
+            font-size:14px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="otp-card">
+
+    <div class="otp-icon">
+        📩
+    </div>
+
+    <div class="otp-title">
+        OTP Verification
+    </div>
+
+    <div class="otp-subtitle">
+        Enter the 6-digit verification code sent to your email address.
+    </div>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="otp"
+            maxlength="6"
+            class="otp-box"
+            placeholder="000000"
+            required
+        >
+
+        <button type="submit" class="btn-verify">
+            Verify OTP
+        </button>
+
+    </form>
+
+    <div class="bottom-text">
+        Secure Employee Authentication
+    </div>
+
+</div>
+
+</body>
+</html>
